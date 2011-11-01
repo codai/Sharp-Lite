@@ -1,0 +1,9 @@
+﻿@model MyStore.Domain.Money
+
+<div class="editor-label">
+    @Html.Label("")
+</div>
+<div class="editor-field">
+    $ @Html.EditorFor(m => m.Amount)
+    @Html.ValidationMessageFor(m => m.Amount)
+</div>

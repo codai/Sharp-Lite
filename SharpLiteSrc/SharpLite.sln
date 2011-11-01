@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpLite.Domain", "app\SharpLite.Domain\SharpLite.Domain.csproj", "{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpLite.NHibernateProvider", "app\SharpLite.NHibernateProvider\SharpLite.NHibernateProvider.csproj", "{5C4888C4-CAB1-45E5-9581-761778131C97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpLite.Web", "app\SharpLite.Web\SharpLite.Web.csproj", "{17073D22-D91F-4AB3-BB9D-E6CBE951BFBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpLite.EntityFrameworkProvider", "app\SharpLite.EntityFrameworkProvider\SharpLite.EntityFrameworkProvider.csproj", "{7901626D-5D18-4DDD-9028-CB37384D1EF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C4888C4-CAB1-45E5-9581-761778131C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C4888C4-CAB1-45E5-9581-761778131C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C4888C4-CAB1-45E5-9581-761778131C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C4888C4-CAB1-45E5-9581-761778131C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17073D22-D91F-4AB3-BB9D-E6CBE951BFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17073D22-D91F-4AB3-BB9D-E6CBE951BFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17073D22-D91F-4AB3-BB9D-E6CBE951BFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17073D22-D91F-4AB3-BB9D-E6CBE951BFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7901626D-5D18-4DDD-9028-CB37384D1EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7901626D-5D18-4DDD-9028-CB37384D1EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7901626D-5D18-4DDD-9028-CB37384D1EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7901626D-5D18-4DDD-9028-CB37384D1EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

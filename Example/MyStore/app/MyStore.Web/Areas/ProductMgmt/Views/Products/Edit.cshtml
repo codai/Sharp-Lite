@@ -1,0 +1,39 @@
+﻿@model MyStore.Tasks.ProductMgmt.ViewModels.EditProductViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product Form</h2>
+
+@using (Html.BeginForm("Edit", "Products")) {
+    @Html.ValidationSummary("Please note the following:")
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Product Category</legend>
+
+        @Html.HiddenFor(m => m.Product.Id)
+        @Html.EditorFor(m => m.Product.Name)
+        @Html.EditorFor(m => m.Product.Price)
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Product.Categories)
+        </div>
+        <div class="editor-field">
+            @foreach (var category in Model.AvailableProductCategories) {
+                <input id="product_ProductCategories_@category.Id" type="checkbox" name="product.Categories" value="@category.Id" 
+                    @(Model.Product.Categories.Contains(category) ? "checked=\"checked\"" : "") />
+                <label for="product_ProductCategories_@category.Id">@category.Name</label><br />
+            }
+
+            @Html.ValidationMessageFor(m => m.AvailableProductCategories)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" /> 
+            @Html.ActionLink("Cancel", "Index")
+        </p>
+    </fieldset>
+}

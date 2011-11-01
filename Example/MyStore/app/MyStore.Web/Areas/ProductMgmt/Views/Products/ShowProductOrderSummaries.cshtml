@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MyStore.Domain.ProductMgmt.Queries.ProductOrderSummaryDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            Product
+        </th>
+        <th>
+            Order Count
+        </th>
+        <th>
+            Total Quanity Sold
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.ProductName
+            </td>
+            <td>
+                @item.OrderCount
+            </td>
+            <td>
+                @item.TotalQuantitySold
+            </td>
+        </tr>
+    }
+</table>

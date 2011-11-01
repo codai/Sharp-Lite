@@ -1,0 +1,35 @@
+﻿@model MyStore.Domain.ProductMgmt.ProductCategory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product Category</legend>
+
+    @Html.DisplayFor(m => m.Name)
+
+    <div class="display-label">
+        @Html.LabelFor(m => m.Parent)
+    </div>
+    <div class="display-field">
+        @(Model.Parent != null ? Model.Parent.Name : "")
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(m => m.Children)
+    </div>
+    <div class="display-field">
+        @foreach (var child in Model.Children) {
+            @child.Name<br />
+        }
+    </div>
+</fieldset>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

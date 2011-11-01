@@ -1,0 +1,21 @@
+==================================================
+S#arp Lite 0.42 for Visual Studio 2010
+==================================================
+
+New and exciting:
+
+It's S#arp Lite!
+
+This initial release of S#arp Lite includes:
+* S#arp Lite source
+* Templify project template
+* Support for NHibernate (Entity Framework support might be coming soon)
+
+-------
+
+Dependencies:
+
+ASP.NET MVC 3
+NHibernate 3.2.0 GA
+NUnit 2.5.10.11092
+Structure Map 2.6.1

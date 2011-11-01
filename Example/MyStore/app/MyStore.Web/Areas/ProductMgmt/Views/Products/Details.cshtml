@@ -1,0 +1,20 @@
+﻿@model MyStore.Domain.ProductMgmt.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product Category</legend>
+
+    @Html.DisplayFor(m => m.Name)
+    @Html.DisplayFor(m => m.Price)
+</fieldset>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

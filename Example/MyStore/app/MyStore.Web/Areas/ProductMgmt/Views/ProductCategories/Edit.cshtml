@@ -1,0 +1,40 @@
+﻿@model MyStore.Tasks.ProductMgmt.ViewModels.EditProductCategoryViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product Category Form</h2>
+
+@using (Html.BeginForm("Edit", "ProductCategories")) {
+    @Html.ValidationSummary("Please note the following:")
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Product Category</legend>
+
+        @Html.HiddenFor(m => m.ProductCategory.Id)
+        @Html.EditorFor(m => m.ProductCategory.Name)
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.ProductCategory.Parent)
+        </div>
+        <div class="editor-field">
+            <!-- Manually creating dropdown because ASP.NET MVC won't handle selected-value correctly, IMO -->
+            <!-- This would be a good item for a helper, which is beyond the scope of this sample. -->
+            <select name="ProductCategory.Parent">
+                <option value="0">-- Select Parent --</option>
+                @foreach (var category in Model.AvailableProductCategories) {
+                    <option value="@category.Id" @(category.Equals(Model.ProductCategory.Parent) ? "selected=\"selected\"" : "")>@category.Name</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(m => m.ProductCategory.Parent)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" /> 
+            @Html.ActionLink("Cancel", "Index")
+        </p>
+    </fieldset>
+}

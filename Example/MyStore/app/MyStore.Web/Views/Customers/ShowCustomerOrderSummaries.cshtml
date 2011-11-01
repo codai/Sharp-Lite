@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MyStore.Domain.Queries.CustomerOrderSummaryDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            Customer
+        </th>
+        <th>
+            Order Count
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.LastName, @item.FirstName
+            </td>
+            <td>
+                @item.OrderCount
+            </td>
+        </tr>
+    }
+</table>

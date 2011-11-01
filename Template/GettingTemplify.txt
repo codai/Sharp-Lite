@@ -1,0 +1,1 @@
+You can download Templify-v0.6.15144.msi from https://github.com/endjin/Templify/downloads
