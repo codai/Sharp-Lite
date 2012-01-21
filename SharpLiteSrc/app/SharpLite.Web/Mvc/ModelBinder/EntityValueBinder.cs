@@ -17,7 +17,11 @@ namespace SharpLite.Web.Mvc.ModelBinder
         /// <param name = "bindingContext">The binding context.</param>
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) {
             Type modelType = bindingContext.ModelType;
-            ValueProviderResult valueProviderResult = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+
+            // Will look for the entity Id either named "ModelName" or "ModelName.Id"
+            ValueProviderResult valueProviderResult = 
+                bindingContext.ValueProvider.GetValue(bindingContext.ModelName) ??
+                bindingContext.ValueProvider.GetValue(bindingContext.ModelName + ".Id");
 
             if (valueProviderResult != null) {
                 Type entityInterfaceType =

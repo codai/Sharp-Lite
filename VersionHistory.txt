@@ -1,4 +1,17 @@
 ==================================================
+S#arp Lite 0.42.01
+==================================================
+
+Resolved the following issues:
+* https://github.com/codai/Sharp-Lite/pull/1
+* https://github.com/codai/Sharp-Lite/issues/2
+* https://github.com/codai/Sharp-Lite/issues/3
+
+Upgrading from previous version:
+
+#) Copy \SharpLite\Template\TemplateSrc\lib\SharpLite.* into your project's lib folder
+
+==================================================
 S#arp Lite 0.42 for Visual Studio 2010
 ==================================================
 

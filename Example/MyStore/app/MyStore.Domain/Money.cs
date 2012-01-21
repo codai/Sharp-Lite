@@ -10,7 +10,7 @@ namespace MyStore.Domain
             Amount = amount;
         }
 
-        public decimal Amount { get; set; }
+        public virtual decimal Amount { get; set; }
 
         public override string ToString() {
             return String.Format("{0:c}", Amount);

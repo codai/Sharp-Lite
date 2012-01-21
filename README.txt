@@ -1,6 +1,16 @@
 Welcome to S#arp Lite!
 
-Get started with your first S#arp Lite project...
+S#arp Lite is an architectural framework for the development of well-designed, custom-built, ASP.NET MVC applications.
+
+For an introduction, see http://devlicio.us/blogs/billy_mccafferty/archive/2011/11/11/s-arp-lite-the-basicss.aspx
+
+The code repository is found at https://github.com/codai/Sharp-Lite
+
+If you'd like to see a couple of example projects, take a look in the \Example folder.
+
+-----------------------------------
+
+To get started with your first S#arp Lite project...
 
 #) Install Visual Studio 2010
 
@@ -8,7 +18,7 @@ Get started with your first S#arp Lite project...
 
 #) Install Templify, available from https://github.com/endjin/Templify/downloads (Templify-v0.6.15144.msi was used with this release.)
 
-#) Copy \SharpLite\Template\s#arp-lite-project-v0.42.pkg to C:\Users\%USER%\AppData\Roaming\Endjin\Templify\repo\
+#) Copy \SharpLite\Template\s#arp-lite-project-v0.42.01.pkg to C:\Users\%USER%\AppData\Roaming\Endjin\Templify\repo\
 (Note that the AppData folder is hidden by default.)
 
 #) In Windows Explorer, create a new, empty folder for your S#arp Lite project (e.g., "MyNewProject")
@@ -32,26 +42,6 @@ Get started with your first S#arp Lite project...
 #) F5 to see the site; you can also run the unit YourProject.Tests in NUnit to verify everything is working
 
 Now, start building out your domain model and run the unit test CanGenerateDatabaseSchema to do just that...it'll be in the "Text Output" tab in NUnit.  You can then run that SQL against your DB.
-
-------------------------------------------------------
-
-Get the example project up and running...
-
-#) Open \SharpLite\Example\MyStore\MyStore.sln
-
-#) Create a database called MyStore in SQL Server
-
-#) Update the connection string in:
-	- MyStore.Web/Web.config
-	- MyStore.Tests/App.config
-
-#) Run the unit-test generated SQL at \SharpLite\Example\MyStore\app\MyStore.DB\schema\UnitTestGeneratedSchema.sql against your DB
-
-#) Build the solution and run all the unit tests in MyStore.Tests...they should all pass
-
-#) F5
-
-
 
 
 
