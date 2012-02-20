@@ -56,7 +56,13 @@
   <ItemGroup>
     <Compile Include="DbContext.cs" />
     <Compile Include="EntityDuplicateChecker.cs" />
+    <Compile Include="INHibernateConfigurationCache.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="LazySessionContext.cs" />
+    <Compile Include="NHibernateConfigurationFileCache.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Web\SessionPerRequestModule.cs" />

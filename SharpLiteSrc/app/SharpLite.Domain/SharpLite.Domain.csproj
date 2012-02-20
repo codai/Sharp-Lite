@@ -57,6 +57,9 @@
     <Compile Include="DataInterfaces\IRepository.cs" />
     <Compile Include="DomainSignatureAttribute.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="FileCache.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="IEntityWithTypedId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\HasUniqueDomainSignatureAttribute.cs" />
