@@ -1,4 +1,5 @@
-﻿using MyStore.Domain;
+﻿using System.Reflection;
+using MyStore.Domain;
 using NHibernate.Bytecode;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
@@ -9,20 +10,37 @@ namespace MyStore.NHibernateProvider
 {
     public class NHibernateInitializer
     {
-        public static Configuration Initialize() {
-            Configuration configuration = new Configuration();
+        public static Configuration Initialize()
+        {
+            INHibernateConfigurationCache cache = new NHibernateConfigurationFileCache();
 
-            configuration
-                .Proxy(p => p.ProxyFactoryFactory<DefaultProxyFactoryFactory>())
-                .DataBaseIntegration(db => {
-                    db.ConnectionStringName = "MyStoreConnectionString";
-                    db.Dialect<MsSql2008Dialect>();
-                })
-                .AddAssembly(typeof(Customer).Assembly)
-                .CurrentSessionContext<LazySessionContext>();
+            string[] mappingAssemblies = new string[] { 
+                typeof(Customer).Assembly.GetName().Name
+            };
+            string configFile = null; //NHibernate.config is not used;
+            string configKey = "MyStore";
 
-            ConventionModelMapper mapper = new ConventionModelMapper();
-            mapper.WithConventions(configuration);
+            Configuration configuration = cache.LoadConfiguration(configKey, configFile, mappingAssemblies);
+
+            if (configuration == null)
+            {
+                configuration = new Configuration();
+
+                configuration
+                    .Proxy(p => p.ProxyFactoryFactory<DefaultProxyFactoryFactory>())
+                    .DataBaseIntegration(db =>
+                    {
+                        db.ConnectionStringName = "MyStoreConnectionString";
+                        db.Dialect<MsSql2008Dialect>();
+                    })
+                    .AddAssembly(typeof(Customer).Assembly)
+                    .CurrentSessionContext<LazySessionContext>();
+
+                ConventionModelMapper mapper = new ConventionModelMapper();
+                mapper.WithConventions(configuration);
+
+                cache.SaveConfiguration(configKey, configuration);
+            }
 
             return configuration;
         }
