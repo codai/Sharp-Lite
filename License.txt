@@ -1,6 +1,6 @@
 New BSD License for S#arp Lite from Codai, Inc.
 
-Copyright (c) 2011, Codai, Inc.
+Copyright (c) 2012, Codai, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
