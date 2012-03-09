@@ -1,0 +1,46 @@
+﻿@model CaTS.Domain.Customer
+
+@{
+    ViewBag.Title = "Customer Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="cffree">
+    <tr>
+        <td>
+            @Html.LabelFor(m => m.AccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.AccountNumber)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(m => m.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.EmailAddress)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(m => m.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.FirstName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(m => m.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.LastName)
+        </td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

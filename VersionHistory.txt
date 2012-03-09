@@ -1,4 +1,22 @@
 ==================================================
+S#arp Lite 0.42.02
+==================================================
+
+Added good sized example project and very comprehensive greenfield development with S#arp Lite under \SharpLite\Example\CaTS
+
+Resolved the following issues:
+* https://github.com/codai/Sharp-Lite/pull/8
+* https://github.com/codai/Sharp-Lite/pull/5 to add configuration caching
+* https://github.com/sharparchitecture/Sharp-Architecture/pull/41
+* https://github.com/codai/Sharp-Lite/issues/6
+* Updated Templify template to 0.42.02
+
+Upgrading from previous version:
+
+#) Copy \SharpLite\Template\TemplateSrc\lib\SharpLite.* into your project's lib folder
+#) To use NHibernate configuration caching, emulate \SharpLite\Example\MyStore\app\MyStore.NHibernateProvider\NHibernateInitializer.cs
+
+==================================================
 S#arp Lite 0.42.01
 ==================================================
 

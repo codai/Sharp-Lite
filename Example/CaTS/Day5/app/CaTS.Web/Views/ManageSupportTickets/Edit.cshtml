@@ -1,0 +1,127 @@
+﻿@using CaTS.Domain.Support
+@model CaTS.Tasks.Support.ViewModels.OpenSupportTicketViewModel
+
+@{
+    ViewBag.Title = "Manage Support Ticket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/Validation/required-if-validation.js")" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript">
+        // Establish JavaScript namespace for page to avoid collisions
+        window.EditSupportTicketView = {};
+
+        EditSupportTicketView.PromptForResolutionIfResolved = function() {
+            if ($('#SupportTicketFormDto_Status').val() == @((int) StatusType.Resolved)) {
+                $('#trResolutionInput').show();
+            }
+            else {
+                $('#trResolutionInput').hide();
+            }
+        };
+
+        EditSupportTicketView.PromptForNewIssueType = function() {
+            if ($('#SupportTicketFormDto_IssueType option:selected').text() == '<< New >>') {
+                $('#SupportTicketFormDto_NewIssueType_Name').show();
+                $('#SupportTicketFormDto_NewIssueType_Name').prop('disabled', false);
+            }
+            else {
+                $('#SupportTicketFormDto_NewIssueType_Name').hide();
+                $('#SupportTicketFormDto_NewIssueType_Name').prop('disabled', true);
+            }
+        };
+
+        $(function() {
+            // Prompt for resolution if status is 'Resolved'
+            EditSupportTicketView.PromptForResolutionIfResolved();
+
+            $('#SupportTicketFormDto_Status').bind('change', function () {
+                EditSupportTicketView.PromptForResolutionIfResolved();
+            });
+
+            // Allow user to add new issue type
+            EditSupportTicketView.PromptForNewIssueType();
+
+            $('#SupportTicketFormDto_IssueType').bind('change', function () {
+                EditSupportTicketView.PromptForNewIssueType();
+            });
+        });
+    </script>
+}
+
+@using (Html.BeginForm("Edit", "ManageSupportTickets")) {
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.SupportTicketFormDto.Id)
+    @Html.Hidden("SupportTicketFormDto.OpenedBy.Id", @Model.LoggedInStaffMember.Id)
+
+    <table class="cffree">
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.SupportTicketFormDto.Customer) <span class="required_star">*</span>
+            </td>
+            <td>
+                <input name="radNewOrExistingCustomer" type="radio" value="Existing" /> Existing Customer <br/>
+                <input name="radNewOrExistingCustomer" type="radio" value="New" /> New Customer
+                @Html.ValidationMessageFor(m => m.SupportTicketFormDto.Customer)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.SupportTicketFormDto.IssueType) <span class="required_star">*</span>
+            </td>
+            <td>
+                <select id="SupportTicketFormDto_IssueType" name="SupportTicketFormDto.IssueType">
+                    <option value="0">-- Select Issue Type --</option>
+                    <!-- Reselect the '<< New >>' option if they provided details for such during the last attempt -->
+                    <option value="0" @(Model.SupportTicketFormDto.NewIssueType != null ? "selected=selected" : "")><< New >></option>
+
+                    @foreach (var issueType in Model.IssueTypes) {
+                        <option value="@issueType.Id" @(issueType.Equals(Model.SupportTicketFormDto.IssueType) ? "selected=selected" : "")>
+                            @issueType.Name
+                        </option>
+                    }
+                </select>
+
+                @Html.TextBoxFor(m => m.SupportTicketFormDto.NewIssueType.Name)
+                @Html.ValidationMessageFor(m => m.SupportTicketFormDto.IssueType)
+                @Html.ValidationMessageFor(m => m.SupportTicketFormDto.NewIssueType.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.SupportTicketFormDto.IssueDescription) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.TextAreaFor(m => m.SupportTicketFormDto.IssueDescription)
+                @Html.ValidationMessageFor(m => m.SupportTicketFormDto.IssueDescription)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.SupportTicketFormDto.Status) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.DropDownList("SupportTicketFormDto.Status",
+                    new SelectList(Model.StatusTypes, "First", "Second"), "-- Select Status --")
+                @Html.ValidationMessageFor(m => m.SupportTicketFormDto.Status)
+            </td>
+        </tr>
+        <tr id="trResolutionInput">
+            <td>
+                @Html.LabelFor(m => m.SupportTicketFormDto.Resolution) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.TextAreaFor(m => m.SupportTicketFormDto.Resolution)
+                @Html.ValidationMessageFor(m => m.SupportTicketFormDto.Resolution)
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <input type="submit" value="Save" /> 
+        @Html.ActionLink("Cancel", "Index")
+    </p>
+}

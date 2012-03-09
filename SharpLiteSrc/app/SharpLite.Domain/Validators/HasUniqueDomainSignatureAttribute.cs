@@ -6,6 +6,10 @@ using System.Web.Mvc;
 
 namespace SharpLite.Domain.Validators
 {
+    /// <summary>
+    /// Due to the fact that .NET does not support generic attributes, this only works for entity 
+    /// types having an Id of type int.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     sealed public class HasUniqueDomainSignatureAttribute : ValidationAttribute
     {

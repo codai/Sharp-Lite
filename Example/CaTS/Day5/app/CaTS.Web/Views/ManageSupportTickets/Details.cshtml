@@ -1,0 +1,22 @@
+﻿@model CaTS.Domain.Support.SupportTicket
+
+@{
+    ViewBag.Title = "Support Ticket Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="cffree">
+    <tr>
+        <td>
+            @Html.LabelFor(m => m.IssueDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.IssueDescription)
+        </td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
