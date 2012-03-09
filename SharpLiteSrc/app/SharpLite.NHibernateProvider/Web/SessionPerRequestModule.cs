@@ -14,28 +14,27 @@ namespace SharpLite.NHibernateProvider.Web
     public class SessionPerRequestModule : IHttpModule
     {
         public void Init(HttpApplication context) {
-            _httpApplication = context;
             context.BeginRequest += ContextBeginRequest;
             context.EndRequest += ContextEndRequest;
         }
 
         private void ContextBeginRequest(object sender, EventArgs e) {
-            foreach (ISessionFactory sessionFactory in GetSessionFactories()) {
-                ISessionFactory localFactory = sessionFactory;
+            foreach (var sessionFactory in GetSessionFactories()) {
+                var localFactory = sessionFactory;
 
                 LazySessionContext.Bind(new Lazy<ISession>(() => BeginSession(localFactory)), sessionFactory);
             }
         }
 
         private static ISession BeginSession(ISessionFactory sessionFactory) {
-            ISession session = sessionFactory.OpenSession();
+            var session = sessionFactory.OpenSession();
             session.BeginTransaction();
             return session;
         }
 
         private void ContextEndRequest(object sender, EventArgs e) {
-            foreach (ISessionFactory sessionfactory in GetSessionFactories()) {
-                ISession session = LazySessionContext.UnBind(sessionfactory);
+            foreach (var sessionfactory in GetSessionFactories()) {
+                var session = LazySessionContext.UnBind(sessionfactory);
                 if (session == null) continue;
                 EndSession(session);
             }
@@ -49,23 +48,18 @@ namespace SharpLite.NHibernateProvider.Web
             session.Dispose();
         }
 
-        public void Dispose() {
-            _httpApplication.BeginRequest -= ContextBeginRequest;
-            _httpApplication.EndRequest -= ContextEndRequest;
-        }
+        public void Dispose() { }
 
         /// <summary>
         /// Retrieves all ISessionFactory instances via IoC
         /// </summary>
         private IEnumerable<ISessionFactory> GetSessionFactories() {
-            IEnumerable<ISessionFactory> sessionFactories = DependencyResolver.Current.GetServices<ISessionFactory>();
+            var sessionFactories = DependencyResolver.Current.GetServices<ISessionFactory>();
 
-            if (sessionFactories == null || sessionFactories.Count() == 0)
+            if (sessionFactories == null || !sessionFactories.Any())
                 throw new TypeLoadException("At least one ISessionFactory has not been registered with IoC");
 
             return sessionFactories;
         }
-
-       private HttpApplication _httpApplication;
     }
 }

@@ -1,0 +1,1 @@
+﻿Folder for any third party installation files; e.g., Telerik ASP.NET MVC, FusionCharts, etc.

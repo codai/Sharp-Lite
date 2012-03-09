@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CaTS.Domain.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <tr>
+        <th>Account Number</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.AccountNumber</td>
+            <td>@item.EmailAddress</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+
+                @using (Html.BeginForm("Delete", "Customers", FormMethod.Post, 
+                    new { style = "display:inline" })) {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", item.Id)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

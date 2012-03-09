@@ -1,0 +1,56 @@
+﻿@model CaTS.Tasks.ViewModels.EditCustomerViewModel
+
+@{
+    ViewBag.Title = "Manage Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "ManageCustomers")) {
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Customer.Id)
+
+    <table class="cffree">
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Customer.AccountNumber) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Customer.AccountNumber)
+                @Html.ValidationMessageFor(m => m.Customer.AccountNumber)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Customer.EmailAddress) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Customer.EmailAddress)
+                @Html.ValidationMessageFor(m => m.Customer.EmailAddress)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Customer.FirstName) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Customer.FirstName)
+                @Html.ValidationMessageFor(m => m.Customer.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Customer.LastName) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Customer.LastName)
+                @Html.ValidationMessageFor(m => m.Customer.LastName)
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <input type="submit" value="Save" /> 
+        @Html.ActionLink("Cancel", "Index")
+    </p>
+}

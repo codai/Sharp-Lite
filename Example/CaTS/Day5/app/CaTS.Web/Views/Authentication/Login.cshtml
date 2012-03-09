@@ -1,0 +1,36 @@
+﻿@model CaTS.Tasks.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary()
+
+    <table class="cffree">
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.EmployeeNumber) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.EmployeeNumber)
+                @Html.ValidationMessageFor(m => m.EmployeeNumber)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Password) <span class="required_star">*</span>
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Login" />
+            </td>
+        </tr>
+    </table>
+}
