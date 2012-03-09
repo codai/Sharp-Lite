@@ -26,3 +26,7 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+packages/
+#ncrunch
+*ncrunch*
+*crunch*.local.xml
