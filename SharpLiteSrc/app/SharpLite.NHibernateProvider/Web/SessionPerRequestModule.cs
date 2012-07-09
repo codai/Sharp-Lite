@@ -16,6 +16,7 @@ namespace SharpLite.NHibernateProvider.Web
         public void Init(HttpApplication context) {
             context.BeginRequest += ContextBeginRequest;
             context.EndRequest += ContextEndRequest;
+            context.Error += ContextError;
         }
 
         private void ContextBeginRequest(object sender, EventArgs e) {
@@ -40,12 +41,37 @@ namespace SharpLite.NHibernateProvider.Web
             }
         }
 
-        private static void EndSession(ISession session) {
-            if (session.Transaction != null && session.Transaction.IsActive) {
-                session.Transaction.Commit();
+        private void ContextError(object sender, EventArgs e) {
+            foreach (var sessionfactory in GetSessionFactories()) {
+                var session = LazySessionContext.UnBind(sessionfactory);
+                if (session == null) continue;
+                EndSession(session, false);
             }
+        }
 
-            session.Dispose();
+        private static void EndSession(ISession session, bool commitTransaction = true) {
+            try {
+                if (session.Transaction != null && session.Transaction.IsActive) {
+                    if (commitTransaction) {
+                        try {
+                            session.Transaction.Commit();
+                        }
+                        catch {
+                            session.Transaction.Rollback();
+                            throw;
+                        }
+                    }
+                    else {
+                        session.Transaction.Rollback();
+                    }
+                }
+            }
+            finally {
+                if (session.IsOpen)
+                    session.Close();
+
+                session.Dispose();
+            }
         }
 
         public void Dispose() { }

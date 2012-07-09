@@ -1,8 +1,37 @@
 ==================================================
+S#arp Lite 0.9
+==================================================
+
+Resolved the following issues:
+* Upgraded to NHibernate 3.3.1
+* Fixed exception handling issue within SessionPerRequestModule that was leaving connections open
+* Added \SharpLite\Template\TemplateSrc\app\TemplateSrc.DB\Migrations\_SqlMigrations.exe which 
+  will be included in all Templify generated S#arp Lite projects.  Details about this project may 
+  be found at http://code.google.com/p/db-migrations-in-raw-sql/
+
+Upgrading from previous version:
+
+#) Copy the following into your project's lib folder:
+	* \SharpLite\Template\TemplateSrc\lib\SharpLite.*
+	* \SharpLite\Template\TemplateSrc\lib\Iesi.Collections.*
+	* \SharpLite\Template\TemplateSrc\lib\NHibernate.*
+
+#) To upgrade the Templify template, copy \SharpLite\Template\s#arp-lite-project-v0.9.pkg to 
+C:\Users\%USER%\AppData\Roaming\Endjin\Templify\repo\ (Note that the AppData folder is hidden by 
+default.)
+
+Coming in v 1.0...
+
+* More documentation, example code, and blog posts
+* Support for Entity Framework in addition to NHibernate
+* ASP.NET MVC 4 (if available at release)
+
+==================================================
 S#arp Lite 0.42.02
 ==================================================
 
-Added good sized example project and very comprehensive greenfield development with S#arp Lite under \SharpLite\Example\CaTS
+Added good sized example project and very comprehensive greenfield development with S#arp Lite 
+under \SharpLite\Example\CaTS
 
 Resolved the following issues:
 * https://github.com/codai/Sharp-Lite/pull/8
@@ -14,7 +43,8 @@ Resolved the following issues:
 Upgrading from previous version:
 
 #) Copy \SharpLite\Template\TemplateSrc\lib\SharpLite.* into your project's lib folder
-#) To use NHibernate configuration caching, emulate \SharpLite\Example\MyStore\app\MyStore.NHibernateProvider\NHibernateInitializer.cs
+#) To use NHibernate configuration caching, emulate 
+   \SharpLite\Example\MyStore\app\MyStore.NHibernateProvider\NHibernateInitializer.cs
 
 ==================================================
 S#arp Lite 0.42.01

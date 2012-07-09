@@ -18,7 +18,7 @@ To get started with your first S#arp Lite project...
 
 #) Install Templify, available from https://github.com/endjin/Templify/downloads (Templify-v0.6.15144.msi was used with this release.)
 
-#) Copy \SharpLite\Template\s#arp-lite-project-v0.42.02.pkg to C:\Users\%USER%\AppData\Roaming\Endjin\Templify\repo\
+#) Copy \SharpLite\Template\s#arp-lite-project-v0.9.pkg to C:\Users\%USER%\AppData\Roaming\Endjin\Templify\repo\
 (Note that the AppData folder is hidden by default.)
 
 #) In Windows Explorer, create a new, empty folder for your S#arp Lite project (e.g., "MyNewProject")
