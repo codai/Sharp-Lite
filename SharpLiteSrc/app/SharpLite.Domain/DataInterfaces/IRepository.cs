@@ -14,12 +14,6 @@ namespace SharpLite.Domain.DataInterfaces
     public interface IRepositoryWithTypedId<T, TId> where T : class
     {
         /// <summary>
-        /// Provides a handle to application wide DB activities such as committing any pending changes,
-        /// beginning a transaction, rolling back a transaction, etc.
-        /// </summary>
-        IDbContext DbContext { get; }
-        
-        /// <summary>
         /// Returns null if a row is not found matching the provided Id.
         /// </summary>
         T Get(TId id);
