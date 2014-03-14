@@ -25,12 +25,6 @@ namespace SharpLite.NHibernateProvider
             }
         }
 
-        public virtual IDbContext DbContext {
-            get {
-                return new DbContext(_sessionFactory);
-            }
-        }
-
         public virtual T Get(TId id) {
             return Session.Get<T>(id);
         }

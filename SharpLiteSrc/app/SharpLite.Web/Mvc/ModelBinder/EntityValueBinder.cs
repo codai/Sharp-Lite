@@ -50,4 +50,4 @@ namespace SharpLite.Web.Mvc.ModelBinder
             return base.BindModel(controllerContext, bindingContext);
         }
     }
-}
+}   

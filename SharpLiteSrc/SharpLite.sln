@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpLite.Domain", "app\SharpLite.Domain\SharpLite.Domain.csproj", "{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpLite.NHibernateProvider", "app\SharpLite.NHibernateProvider\SharpLite.NHibernateProvider.csproj", "{5C4888C4-CAB1-45E5-9581-761778131C97}"
