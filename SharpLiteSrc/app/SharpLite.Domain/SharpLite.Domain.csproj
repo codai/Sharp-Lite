@@ -34,7 +34,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>SharpLite.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,9 +61,6 @@
     <Compile Include="IEntityWithTypedId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\HasUniqueDomainSignatureAttribute.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SharpLite.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
