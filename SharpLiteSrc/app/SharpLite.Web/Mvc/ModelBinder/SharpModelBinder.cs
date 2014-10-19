@@ -86,7 +86,7 @@ namespace SharpLite.Web.Mvc.ModelBinder
                                                     (propertyType.GetGenericTypeDefinition() == typeof(IList<>) ||
                                                      propertyType.GetGenericTypeDefinition() == typeof(ICollection<>) ||
                                                      propertyType.GetGenericTypeDefinition() ==
-                                                     typeof(Iesi.Collections.Generic.ISet<>) ||
+                                                     typeof(ISet<>) ||
                                                      propertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>));
 
             var isSimpleGenericBindableEntityCollection = isSimpleGenericBindableCollection &&
